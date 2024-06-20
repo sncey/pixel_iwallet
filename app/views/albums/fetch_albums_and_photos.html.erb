@@ -1,4 +1,29 @@
-<h1>Matched Albums</h1>
-<% @matched_albums.each do |matched_album| %>
-  <p>Album ID: <%= matched_album['albumId'] %>, Photo Title: <%= matched_album['title'] %></p>
-<% end %>
+function fetch_album_photo(albumId) {
+  let apiUrl = `https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`;
+  return fetch(apiUrl)
+    .then(response => response.json())
+    .then(photos => {
+
+      if (photos && photos.length > 0) {
+        // Sadece ilk fotoğrafın URL'sini alıyoruz
+        let thumbnailUrl = photos[0].thumbnailUrl;
+        let url = photos[0].url;
+
+        let img1 = new Image();
+        img1.src = thumbnailUrl;
+        let img2 = new Image();
+        img2.src = url;
+
+        return {
+          thumbnailUrl: thumbnailUrl,
+          url: url
+        };
+      } else {
+        return { thumbnailUrl: '', url: '' };
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching album photos:', error);
+      return { thumbnailUrl: '', url: '' };
+    });
+}
