@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pixels</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <h1 class="text-center my-4">Users</h1>
+
+  <div class="container mb-4">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="input-group">
+          <input type="text" id="search-input" class="form-control" placeholder="Search Users by Username" aria-label="Search Users" aria-describedby="button-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="clear-search">x</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row" id="user-list">
+      <% @users.each do |user| %>
+        <div class="col-md-12 mb-4 user-card" data-name="<%= user.name.downcase %>" data-username="<%= user.username.downcase %>">
+          <div class="card flex-row align-items-center">
+            <img src="<%= user.photo_url %>" class="rounded-circle ml-3" style="width: 60px; height: 60px;" alt="User Photo">
+            <div class="card-body">
+              <h5 class="card-title mb-1"><%= user.name %></h5>
+              <p class="card-text text-muted"><%= user.username %></p>
+            </div>
+            <div class="ml-auto pr-3">
+              <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-primary' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.getElementById('search-input');
+      const clearButton = document.getElementById('clear-search');
+      const userList = document.getElementById('user-list');
+      const usersData = <%= @users.map { |user| { id: user.id, name: user.name, username: user.username, photo_url: user.photo_url } }.to_json.html_safe %>;
+
+      function renderUsers(users) {
+        let userCards = '';
+
+        users.forEach(function(user) {
+          userCards += `
+            <div class="col-md-12 mb-4 user-card" data-name="${user.name.toLowerCase()}" data-username="${user.username.toLowerCase()}">
+              <div class="card flex-row align-items-center">
+                <img src="${user.photo_url}" class="rounded-circle ml-3" style="width: 60px; height: 60px;" alt="User Photo">
+                <div class="card-body">
+                  <h5 class="card-title mb-1">${user.name}</h5>
+                  <p class="card-text text-muted">${user.username}</p>
+                </div>
+                <div class="ml-auto pr-3">
+                  <a href="/users/${user.id}/edit" class="btn btn-primary">Edit</a>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+
+        userList.innerHTML = userCards;
+
+        if (users.length === 0) {
+          userList.innerHTML = '<p class="text-muted">No users found.</p>';
+        }
+      }
+
+      function searchUsers(searchTerm) {
+        const filteredUsers = usersData.filter(function(user) {
+          return user.username.toLowerCase().includes(searchTerm);
+        });
+        renderUsers(filteredUsers);
+      }
+
+      searchInput.addEventListener('input', function() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        if (searchTerm === '') {
+          renderUsers(usersData);
+        } else {
+          searchUsers(searchTerm);
+        }
+      });
+
+      clearButton.addEventListener('click', function() {
+        searchInput.value = '';
+        renderUsers(usersData);
+      });
+    });
+  </script>
+</body>
+</html>

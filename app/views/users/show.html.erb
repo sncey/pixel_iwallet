@@ -1,0 +1,15 @@
+<h1>User Details</h1>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= @user.name %></h5>
+    <p class="card-text"><strong>Username:</strong> <%= @user.username %></p>
+    <p class="card-text"><strong>Email:</strong> <%= @user.email %></p>
+    <p class="card-text"><strong>Address:</strong> <%= @user.street %>, <%= @user.suite %>, <%= @user.city %>, <%= @user.zipcode %></p>
+    <p class="card-text"><strong>Phone:</strong> <%= @user.phone %></p>
+    <p class="card-text"><strong>Website:</strong> <%= @user.website %></p>
+
+    <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary' %>
+    <%= link_to 'Back', users_path, class: 'btn btn-secondary' %>
+  </div>
+</div>

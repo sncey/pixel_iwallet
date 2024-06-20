@@ -1,0 +1,4 @@
+<h1>Matched Albums</h1>
+<% @matched_albums.each do |matched_album| %>
+  <p>Album ID: <%= matched_album['albumId'] %>, Photo Title: <%= matched_album['title'] %></p>
+<% end %>
