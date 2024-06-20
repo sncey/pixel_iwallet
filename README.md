@@ -7,18 +7,19 @@ Things you may want to cover:
 
 * Ruby version
 
-* System dependencies
+ruby 3.3.1 (2024-04-23 revision c56cd86388) [x86_64-linux]
 
-* Configuration
+* Database version
 
-* Database creation
-
-* Database initialization
+psql (PostgreSQL) 14.12 (Ubuntu 14.12-0ubuntu0.22.04.1)
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+Go to rails console and run this code "JsonPlaceholderService.fetch_users"
 
-* Deployment instructions
 
-* ...
+## Deployment
+
+This project is deployed on Heroku. You can visit the live application at:
+
+[https://pixelsiwallet-95c4530f130e.herokuapp.com](https://pixelsiwallet-95c4530f130e.herokuapp.com)
