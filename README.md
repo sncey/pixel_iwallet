@@ -30,7 +30,6 @@ This project is deployed on Heroku. You can visit the live application at:
 
 MainPage
 
-<<<<<<< HEAD
 ![mainpage](mainpage.png)
 
 MainPage Search Area
@@ -66,5 +65,3 @@ EditPage & AlbumLists Area
 Album Popup Area
 
 ![AlbumsPopupArea](https://github.com/sncey/pixel_iwallet/assets/60846011/c1ddef93-b7a6-4050-82c8-139f30082efb)
-
->>>>>>> 852983bb2cd224fc667ba962b97690bbcdb386b4
