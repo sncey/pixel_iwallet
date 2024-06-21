@@ -1,16 +1,19 @@
-require 'httparty'
-
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   before_action :set_albums, only: [:edit]
 
   def index
     @users = User.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @users.to_json(include: :albums) }
+    end
   end
 
   def show
     @user = User.find(params[:id])
-    @albums = @user.albums.includes(:photos)
+    @albums = @user.albums.includes(:photos) # Assuming User has_many :albums and Album has_many :photos
   end
 
   def edit
@@ -19,6 +22,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to @user, notice: 'User was successfully updated.'
     else
@@ -42,6 +46,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :street, :suite, :city, :zipcode, :phone, :website)
+    params.require(:user).permit(:name, :username, :email, :street, :suite, :city, :zipcode, :phone, :website)
   end
 end
