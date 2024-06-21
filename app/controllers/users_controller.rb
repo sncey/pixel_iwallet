@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @albums = @user.albums.includes(:photos) # Assuming User has_many :albums and Album has_many :photos
+    @albums = @user.albums.includes(:photos)
   end
 
   def edit
