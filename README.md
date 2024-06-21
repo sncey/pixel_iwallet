@@ -30,6 +30,7 @@ This project is deployed on Heroku. You can visit the live application at:
 
 MainPage
 
+<<<<<<< HEAD
 ![mainpage](mainpage.png)
 
 MainPage Search Area
@@ -47,3 +48,23 @@ EditPage & AlbumLists Area
 Album Popup Area
 
 ![AlbumsPopupArea](AlbumsPopupArea.png)
+=======
+![mainpage](https://github.com/sncey/pixel_iwallet/assets/60846011/b096fabb-8805-434e-b887-1653e539458f)
+
+MainPage Search Area
+
+![mainpage_searchArea](https://github.com/sncey/pixel_iwallet/assets/60846011/6184e9a0-53c1-49b3-ad23-ad6e5e6a4171)
+
+MainPage Search Area Flash Alert
+
+![mainpageSearchAreaflashAlert](https://github.com/sncey/pixel_iwallet/assets/60846011/615a8179-3f69-44a2-8b07-a67dced4cd55)
+
+EditPage & AlbumLists Area
+
+![editpageAlbums](https://github.com/sncey/pixel_iwallet/assets/60846011/3ca46de1-a2f0-460c-bc80-7d460a9612cf)
+
+Album Popup Area
+
+![AlbumsPopupArea](https://github.com/sncey/pixel_iwallet/assets/60846011/c1ddef93-b7a6-4050-82c8-139f30082efb)
+
+>>>>>>> 852983bb2cd224fc667ba962b97690bbcdb386b4
