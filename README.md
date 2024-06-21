@@ -25,3 +25,25 @@ Go to rails console and run this code "JsonPlaceholderService.fetch_users"
 This project is deployed on Heroku. You can visit the live application at:
 
 [https://pixelsiwallet-95c4530f130e.herokuapp.com](https://pixelsiwallet-95c4530f130e.herokuapp.com)
+
+## images from inside the project
+
+MainPage
+
+![mainpage](mainpage.png)
+
+MainPage Search Area
+
+![mainpage_searchArea](mainpage_searchArea.png)
+
+MainPage Search Area Flash Alert
+
+![mainpageSearchAreaflashAlert](mainpageSearchAreaflashAlert.png)
+
+EditPage & AlbumLists Area
+
+![editpageAlbums](editpageAlbums.png)
+
+Album Popup Area
+
+![AlbumsPopupArea](AlbumsPopupArea.png)
